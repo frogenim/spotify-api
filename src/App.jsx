@@ -198,6 +198,13 @@ function App() {
       </Container>
 
       <Container className="my-4">
+        {/* Spinner for loading albums */}
+        {loadingAlbums && (
+          <div className="d-flex justify-content-center my-5">
+            <Spinner animation="border" />
+          </div>
+        )}
+        
         {!albums.length && (
           <>
             <h2 className="text-center">Top 20 Lagu</h2>
@@ -284,7 +291,30 @@ function App() {
             <Modal.Title>Now Playing: {playingTrack?.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <ProgressBar now={(currentTime / duration) * 100} label={`${Math.round(currentTime)}s`} />
+            <ProgressBar
+              now={(currentTime / duration) * 100}
+              label={`${Math.round(currentTime)}s`}
+              onMouseDown={(e) => {
+                if (audioRef.current) {
+                  // Pause sementara saat menyeret slider
+                  audioRef.current.pause();
+                  setIsPlaying(false);
+                }
+              }}
+              onMouseUp={(e) => {
+                if (audioRef.current) {
+                  // Mendapatkan posisi klik pada progress bar
+                  const newTime = (e.nativeEvent.offsetX / e.target.offsetWidth) * duration;
+                  audioRef.current.currentTime = newTime;
+                  setCurrentTime(newTime);
+
+                  // Putar kembali lagu setelah slider dilepas
+                  audioRef.current.play();
+                  setIsPlaying(true);
+                }
+              }}
+              style={{ cursor: 'pointer' }}
+            />
             <div className="d-flex justify-content-center my-3">
               <Button
                 onClick={() => {
