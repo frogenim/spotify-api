@@ -3,40 +3,166 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Styling umum untuk seluruh aplikasi */
+.App {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  padding: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Styling judul aplikasi */
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #2c3e50;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+  text-transform: uppercase;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Input search */
+input.form-control {
+  border-radius: 30px;
+  padding: 15px;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+button.btn {
+  border-radius: 30px;
+  background-color: #2980b9;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+}
+button.btn:hover {
+  background-color: #3498db;
+}
+
+/* Styling card album */
 .card {
-  padding: 2em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-.read-the-docs {
-  color: #888;
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+.card-body {
+  background: #fff;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: #34495e;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  color: #7f8c8d;
+}
+
+/* Modal Album dan Tracks */
+.modal-header {
+  background: #3873ad;
+  color: #ecf0f1;
+}
+
+.modal-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.modal-body {
+  background: #f7f9f9;
+  padding: 20px;
+}
+
+.modal-content {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* List Group untuk tracks */
+.list-group-item {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.list-group-item img {
+  border-radius: 8px;
+  margin-right: 15px;
+}
+
+.list-group-item:hover {
+  background-color: #ecf0f1;
+}
+
+/* Modal Lirik */
+pre {
+  font-size: 1.1rem;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  white-space: pre-wrap;
+  line-height: 1.5;
+  color: #2c3e50;
+}
+
+/* Spinner loading */
+.spinner-border {
+  color: #3498db;
+}
+
+/* Pagination */
+.pagination {
+  display: inline-flex;
+  gap: 5px;
+}
+
+.page-link {
+  border-radius: 50%;
+  font-size: 1.2rem;
+  padding: 8px 12px;
+}
+
+.pagination-item.active .page-link {
+  background-color: #2980b9;
+  color: #fff;
+  border-color: #2980b9;
+}
+
+.audio-player {
+  margin-top: 20px;
+}
+
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+}
+
+.progress-bar {
+  width: 80%;
+  margin-right: 10px;
+}
+
+.time-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
 }
