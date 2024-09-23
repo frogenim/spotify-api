@@ -206,7 +206,7 @@ function App() {
                 <Spinner animation="border" />
               </div>
             ) : (
-              <Row className="mx-2 row row-cols-4">
+              <Row className="mx-2 row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
                 {topTracks.map((track, i) => (
                   <Card key={i} onClick={() => handleTrackPreview(track.track)} style={{ cursor: 'pointer' }}>
                     <Card.Img variant="top" src={track.track.album.images?.[0]?.url || "https://via.placeholder.com/150"} />
@@ -226,12 +226,12 @@ function App() {
             <Spinner animation="border" />
           </div>
         ) : (
-          <Row className="mx-2 row row-cols-4">
+          <Row className="mx-2 row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
             {currentAlbums.map((album, i) => (
-              <Card key={i} onClick={() => fetchTracks(album.id, album.name, album.images[0]?.url)} style={{ cursor: 'pointer' }}>
-                <Card.Img variant="top" src={album.images[0]?.url || "https://via.placeholder.com/150"} />
+              <Card key={i} className="mb-4" onClick={() => fetchTracks(album.id, album.name, album.images[0]?.url)} style={{ cursor: 'pointer' }}>
+                <Card.Img variant="top" src={album.images[0]?.url || "https://via.placeholder.com/150"} className="img-fluid" />
                 <Card.Body>
-                  <Card.Title>{album.name}</Card.Title>
+                  <Card.Title className="text-truncate">{album.name}</Card.Title>
                   <Card.Text>{album.artists[0].name}</Card.Text>
                 </Card.Body>
               </Card>
@@ -309,13 +309,13 @@ function App() {
           <Modal.Header closeButton>
             <Modal.Title>Lirik Lagu</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
+          <Modal.Body style={{ maxHeight: 'calc(100vh - 200px)', overflowY: 'auto' }}>
             {loadingLyrics ? (
               <div className="d-flex justify-content-center my-5">
                 <Spinner animation="border" />
               </div>
             ) : (
-              <pre>{lyrics}</pre>
+              <pre style={{ whiteSpace: 'pre-wrap' }}>{lyrics}</pre>
             )}
           </Modal.Body>
         </Modal>
